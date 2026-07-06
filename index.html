@@ -179,36 +179,6 @@
       margin-top: 22px;
     }
 
-    .auth-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      border: 1px solid var(--border);
-      font-weight: 700;
-      flex-wrap: wrap;
-    }
-
-    .auth-banner .actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .auth-banner .user-pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 700;
-    }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -359,13 +329,6 @@
 
     <section class="hero">
       <div class="hero-card">
-        <div class="auth-banner" id="authBanner">
-          <span id="authMessage">A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.</span>
-          <div class="actions">
-            <a class="btn btn-primary" id="loginButton" href="/.auth/login/aad">Bejelentkezés</a>
-            <a class="btn btn-secondary" id="logoutButton" href="/.auth/logout">Kijelentkezés</a>
-          </div>
-        </div>
         <div class="eyebrow">Statikus Azure demo</div>
         <h1>Publikus webapp ACC / BIM 360 induláshoz Marcitól</h1>
         <p>Ez egy tiszta statikus mintaoldal, amit fel tudsz tenni Azure Static Web Apps Free csomagba. Jó első lépés
@@ -453,9 +416,6 @@
 
   <script>
     const toggle = document.getElementById('themeToggle');
-    const authMessage = document.getElementById('authMessage');
-    const loginButton = document.getElementById('loginButton');
-    const logoutButton = document.getElementById('logoutButton');
 
     toggle.addEventListener('click', () => {
       const root = document.documentElement;
@@ -463,34 +423,6 @@
       root.setAttribute('data-theme', dark ? 'light' : 'dark');
       toggle.textContent = dark ? '🌙' : '☀️';
     });
-
-    async function loadUserInfo() {
-      try {
-        const response = await fetch('/.auth/me');
-        if (!response.ok) {
-          throw new Error('Not authenticated');
-        }
-
-        const data = await response.json();
-        const user = data?.clientPrincipal;
-        if (user) {
-          const userName = user.userDetails || user.userId || 'ismeretlen felhasználó';
-          authMessage.innerHTML = `Bejelentkezve: <span class="user-pill">${userName}</span>`;
-          loginButton.style.display = 'none';
-          logoutButton.style.display = 'inline-flex';
-        } else {
-          authMessage.textContent = 'A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.';
-          loginButton.style.display = 'inline-flex';
-          logoutButton.style.display = 'none';
-        }
-      } catch (error) {
-        authMessage.textContent = 'A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.';
-        loginButton.style.display = 'inline-flex';
-        logoutButton.style.display = 'none';
-      }
-    }
-
-    loadUserInfo();
   </script>
 </body>
 
