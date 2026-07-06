@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,8 +23,9 @@
       --primary-soft: #d6e5e3;
       --success: #437a22;
       --radius: 18px;
-      --shadow: 0 18px 45px rgba(26,24,16,0.08);
+      --shadow: 0 18px 45px rgba(26, 24, 16, 0.08);
     }
+
     [data-theme="dark"] {
       --bg: #171614;
       --surface: #1d1c19;
@@ -36,10 +38,17 @@
       --primary-hover: #7dc0c8;
       --primary-soft: #243536;
       --success: #89bf62;
-      --shadow: 0 18px 45px rgba(0,0,0,0.30);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.30);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', system-ui, sans-serif;
@@ -47,100 +56,296 @@
       color: var(--text);
       line-height: 1.6;
     }
-    a { color: inherit; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .topbar {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 20px 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
     .logo {
-      width: 42px; height: 42px; border-radius: 12px; background: var(--primary);
-      color: white; display: grid; place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
       box-shadow: var(--shadow);
     }
-    .nav { display: flex; gap: 18px; align-items: center; }
-    .nav a { text-decoration: none; color: var(--muted); font-weight: 600; }
-    .theme-btn {
-      border: 1px solid var(--border); background: var(--surface); color: var(--text);
-      border-radius: 999px; padding: 10px 14px; cursor: pointer; font-weight: 700;
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
     }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
     .hero {
-      display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 24px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 24px;
       padding: 24px 0 20px;
     }
-    .hero-card, .panel, .feature, .step, .cta-box {
+
+    .hero-card,
+    .panel,
+    .feature,
+    .step,
+    .cta-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .hero-card { padding: 34px; }
+
+    .hero-card {
+      padding: 34px;
+    }
+
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--primary-soft); color: var(--primary);
-      border-radius: 999px; padding: 8px 12px; font-size: 13px; font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 800;
       margin-bottom: 18px;
     }
+
     h1 {
       margin: 0 0 14px;
       font-size: clamp(2.2rem, 5vw, 4.3rem);
       line-height: 1.02;
       letter-spacing: -0.03em;
     }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin: 0 0 10px; }
-    h3 { margin: 0 0 10px; font-size: 1.1rem; }
-    p { margin: 0 0 16px; color: var(--muted); max-width: 70ch; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin: 0 0 10px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .auth-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      flex-wrap: wrap;
+    }
+
+    .auth-banner .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .auth-banner .user-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 700;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 800;
-      padding: 13px 18px; border-radius: 999px; border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
     }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-hover); }
-    .btn-secondary { background: var(--surface-2); color: var(--text); border-color: var(--border); }
-    .panel { padding: 26px; }
-    .status-list { display: grid; gap: 14px; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .panel {
+      padding: 26px;
+    }
+
+    .status-list {
+      display: grid;
+      gap: 14px;
+    }
+
     .status-row {
-      display: flex; justify-content: space-between; gap: 14px; align-items: center;
-      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
-    .status-row:last-child { border-bottom: 0; padding-bottom: 0; }
-    .ok { color: var(--success); font-weight: 700; }
-    .section { padding: 38px 0 12px; }
-    .features, .steps {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+
+    .status-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
     }
-    .feature, .step, .cta-box { padding: 24px; }
+
+    .ok {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 38px 0 12px;
+    }
+
+    .features,
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature,
+    .step,
+    .cta-box {
+      padding: 24px;
+    }
+
     .meta {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 13px; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 14px; white-space: pre-line;
+      font-size: 13px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      white-space: pre-line;
     }
-    .steps { margin-top: 14px; }
+
+    .steps {
+      margin-top: 14px;
+    }
+
     .step-no {
-      width: 36px; height: 36px; border-radius: 999px; display: grid; place-items: center;
-      background: var(--primary-soft); color: var(--primary); font-weight: 800; margin-bottom: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 12px;
     }
+
     .cta-box {
       margin: 28px 0 42px;
-      display: flex; justify-content: space-between; gap: 20px; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
     }
+
     .footer {
-      padding: 10px 0 40px; color: var(--muted); font-size: 14px;
+      padding: 10px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
     }
+
     @media (max-width: 920px) {
-      .hero, .features, .steps, .cta-box { grid-template-columns: 1fr; display: grid; }
-      .nav a { display: none; }
+
+      .hero,
+      .features,
+      .steps,
+      .cta-box {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .nav a {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header class="topbar">
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19 12 4l8 15"></path><path d="M8 14h8"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19 12 4l8 15"></path>
+            <path d="M8 14h8"></path>
+          </svg>
         </div>
         <span>APS ACC Demo</span>
       </div>
@@ -154,9 +359,17 @@
 
     <section class="hero">
       <div class="hero-card">
+        <div class="auth-banner" id="authBanner">
+          <span id="authMessage">A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.</span>
+          <div class="actions">
+            <a class="btn btn-primary" id="loginButton" href="/.auth/login/aad">Bejelentkezés</a>
+            <a class="btn btn-secondary" id="logoutButton" href="/.auth/logout">Kijelentkezés</a>
+          </div>
+        </div>
         <div class="eyebrow">Statikus Azure demo</div>
         <h1>Publikus webapp ACC / BIM 360 induláshoz Marcitól</h1>
-        <p>Ez egy tiszta statikus mintaoldal, amit fel tudsz tenni Azure Static Web Apps Free csomagba. Jó első lépés demóhoz, prezentációhoz vagy későbbi APS backend előkészítéséhez.</p>
+        <p>Ez egy tiszta statikus mintaoldal, amit fel tudsz tenni Azure Static Web Apps Free csomagba. Jó első lépés
+          demóhoz, prezentációhoz vagy későbbi APS backend előkészítéséhez.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#deploy">Hogyan deployold</a>
           <a class="btn btn-secondary" href="#next">Hogyan bővítsd később</a>
@@ -175,7 +388,8 @@
 
     <section class="section" id="features">
       <h2>Mit tud ez a demó</h2>
-      <p>Az oldal célja, hogy legyen egy tiszta, gyorsan publikálható statikus kiindulópontod, amit bármikor össze tudsz kötni később Azure Functions vagy más backend megoldással.</p>
+      <p>Az oldal célja, hogy legyen egy tiszta, gyorsan publikálható statikus kiindulópontod, amit bármikor össze tudsz
+        kötni később Azure Functions vagy más backend megoldással.</p>
       <div class="features">
         <article class="feature">
           <h3>Publikus URL</h3>
@@ -186,16 +400,16 @@
           <h3>Egyszerű deploy</h3>
           <p>GitHub repositoryból automatikus deployjal működik, így később minden commit publikálhat.</p>
           <div class="meta">Framework: No Framework
-App location: /
-API location: (üres)
-Output location: (üres)</div>
+            App location: /
+            API location: (üres)
+            Output location: (üres)</div>
         </article>
         <article class="feature" id="next">
           <h3>Későbbi bővítés</h3>
           <p>Később backenddel kiegészíthető APS login, callback és ACC projektlekérő végpontokkal.</p>
           <div class="meta">/api/auth/login
-/api/auth/callback
-/api/acc/projects</div>
+            /api/auth/callback
+            /api/acc/projects</div>
         </article>
       </div>
     </section>
@@ -225,9 +439,11 @@ Output location: (üres)</div>
     <section class="cta-box">
       <div>
         <h2>Készen áll a publikálásra</h2>
-        <p>Ez a verzió még csak statikus, de tökéletes alap Azure-os bemutató oldalnak és későbbi APS / ACC integrációhoz.</p>
+        <p>Ez a verzió még csak statikus, de tökéletes alap Azure-os bemutató oldalnak és későbbi APS / ACC
+          integrációhoz.</p>
       </div>
-      <a class="btn btn-primary" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Vissza a tetejére</a>
+      <a class="btn btn-primary" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Vissza
+        a tetejére</a>
     </section>
 
     <footer class="footer">
@@ -237,12 +453,45 @@ Output location: (üres)</div>
 
   <script>
     const toggle = document.getElementById('themeToggle');
+    const authMessage = document.getElementById('authMessage');
+    const loginButton = document.getElementById('loginButton');
+    const logoutButton = document.getElementById('logoutButton');
+
     toggle.addEventListener('click', () => {
       const root = document.documentElement;
       const dark = root.getAttribute('data-theme') === 'dark';
       root.setAttribute('data-theme', dark ? 'light' : 'dark');
       toggle.textContent = dark ? '🌙' : '☀️';
     });
+
+    async function loadUserInfo() {
+      try {
+        const response = await fetch('/.auth/me');
+        if (!response.ok) {
+          throw new Error('Not authenticated');
+        }
+
+        const data = await response.json();
+        const user = data?.clientPrincipal;
+        if (user) {
+          const userName = user.userDetails || user.userId || 'ismeretlen felhasználó';
+          authMessage.innerHTML = `Bejelentkezve: <span class="user-pill">${userName}</span>`;
+          loginButton.style.display = 'none';
+          logoutButton.style.display = 'inline-flex';
+        } else {
+          authMessage.textContent = 'A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.';
+          loginButton.style.display = 'inline-flex';
+          logoutButton.style.display = 'none';
+        }
+      } catch (error) {
+        authMessage.textContent = 'A tartalom megnyitásához előbb be kell jelentkezni Microsoft Entra ID-val.';
+        loginButton.style.display = 'inline-flex';
+        logoutButton.style.display = 'none';
+      }
+    }
+
+    loadUserInfo();
   </script>
 </body>
+
 </html>
