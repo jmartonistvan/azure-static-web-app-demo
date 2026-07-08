@@ -290,6 +290,46 @@
       font-size: 14px;
     }
 
+    .weather-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 16px 8px 8px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      color: var(--text);
+      margin: 16px auto 0;
+      width: fit-content;
+    }
+
+    .weather-badge .weather-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+    }
+
+    .weather-badge .weather-temp {
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .weather-badge .weather-place {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .weather-badge .weather-desc {
+      color: var(--muted);
+    }
+
     @media (max-width: 920px) {
 
       .hero,
@@ -326,6 +366,13 @@
         <button id="themeToggle" class="theme-btn" aria-label="Téma váltása">🌙</button>
       </nav>
     </header>
+
+    <div id="weatherBadge" class="weather-badge" aria-live="polite">
+      <span class="weather-icon" id="weatherIcon">⛅</span>
+      <span class="weather-temp" id="weatherTemp">--°C</span>
+      <span class="weather-desc" id="weatherDesc">Időjárás betöltése…</span>
+      <span class="weather-place" id="weatherPlace"></span>
+    </div>
 
     <section class="hero">
       <div class="hero-card">
@@ -423,6 +470,66 @@
       root.setAttribute('data-theme', dark ? 'light' : 'dark');
       toggle.textContent = dark ? '🌙' : '☀️';
     });
+
+    (function () {
+      const iconEl = document.getElementById('weatherIcon');
+      const tempEl = document.getElementById('weatherTemp');
+      const descEl = document.getElementById('weatherDesc');
+      const placeEl = document.getElementById('weatherPlace');
+
+      const FALLBACK = { lat: 47.4979, lon: 19.0402, name: 'Budapest' };
+
+      const WEATHER_CODES = {
+        0: ['☀️', 'Derült'],
+        1: ['🌤️', 'Túlnyomóan derült'],
+        2: ['⛅', 'Váltakozó felhőzet'],
+        3: ['☁️', 'Borult'],
+        45: ['🌫️', 'Köd'],
+        48: ['🌫️', 'Zúzmarás köd'],
+        51: ['🌦️', 'Gyenge szitálás'],
+        53: ['🌦️', 'Szitálás'],
+        55: ['🌦️', 'Sűrű szitálás'],
+        61: ['🌧️', 'Gyenge eső'],
+        63: ['🌧️', 'Eső'],
+        65: ['🌧️', 'Erős eső'],
+        71: ['🌨️', 'Gyenge havazás'],
+        73: ['🌨️', 'Havazás'],
+        75: ['❄️', 'Erős havazás'],
+        80: ['🌦️', 'Zápor'],
+        81: ['🌧️', 'Zápor'],
+        82: ['⛈️', 'Heves zápor'],
+        95: ['⛈️', 'Zivatar'],
+        96: ['⛈️', 'Zivatar jéggel'],
+        99: ['⛈️', 'Erős zivatar jéggel']
+      };
+
+      async function loadWeather(lat, lon, placeName) {
+        try {
+          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('weather fetch failed');
+          const data = await res.json();
+          const cw = data.current_weather;
+          const [icon, desc] = WEATHER_CODES[cw.weathercode] || ['🌡️', 'Ismeretlen'];
+          iconEl.textContent = icon;
+          tempEl.textContent = `${Math.round(cw.temperature)}°C`;
+          descEl.textContent = desc;
+          placeEl.textContent = placeName ? `· ${placeName}` : '';
+        } catch (err) {
+          descEl.textContent = 'Időjárás nem elérhető';
+        }
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => loadWeather(pos.coords.latitude, pos.coords.longitude, ''),
+          () => loadWeather(FALLBACK.lat, FALLBACK.lon, FALLBACK.name),
+          { timeout: 5000 }
+        );
+      } else {
+        loadWeather(FALLBACK.lat, FALLBACK.lon, FALLBACK.name);
+      }
+    })();
   </script>
 </body>
 
